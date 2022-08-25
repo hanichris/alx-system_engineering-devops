@@ -11,5 +11,5 @@ do
     then
 	echo "Hi"
   fi
-  let "a+=1"
+  (( a++ ))
 done
