@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Using a while loop accommpanied by the `if` conditional
+
+var="Best School"
+a=1
+
+while [ "$a" -le 10 ]
+do
+  echo "$var"
+  if [ "$a" -eq 9 ]
+    then
+	echo "Hi"
+  fi
+  let "a+=1"
+done
