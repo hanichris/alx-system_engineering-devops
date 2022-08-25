@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Bash script to display a text 10 times using `until` loop
+
+var="Best School"
+a=1
+
+until (( a > 10 ))
+do
+  echo "$var"
+  (( a++ ))
+done
