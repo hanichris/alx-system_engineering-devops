@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Display the contents of the current directory in a list format
+#where only part of the name after the first dash is displayed.
+
+shopt -s nullglob
+
+for file in *
+do
+  echo "$file" | cut -d "-" -f2
+done
