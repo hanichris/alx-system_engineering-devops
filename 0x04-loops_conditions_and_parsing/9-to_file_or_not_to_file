@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Bash scipt that gives surface level information about a file.
+# The information obtained is whether the file exists, if it's empty and
+# if it's a regular file.
+
+File="school"
+
+if [ -a "$File" ]; then
+  echo "school file exists"
+  if [ -s "$File" ]; then
+	 echo "school file is not empty"
+  else
+	  echo "school file is empty"
+  fi
+  if [ -f "$File" ]; then
+	  echo "school is a regular file"
+  fi
+else
+  echo "school file does not exist"
+fi 
