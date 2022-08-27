@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Using `read` to display the contents of a file.
+
+PASSWORD_FILE=/etc/passwd
+while IFS=':' read -ra LINE
+do
+  echo "${LINE[0]}:${LINE[2]}:${LINE[5]}"
+done < "$PASSWORD_FILE"
