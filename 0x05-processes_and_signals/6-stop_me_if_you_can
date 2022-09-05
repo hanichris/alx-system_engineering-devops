@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Terminate a process using `pkill` instead of `kill $(pgrep -f <PATTERN>)`
+pkill -f 4-to_infinity_and_beyond
