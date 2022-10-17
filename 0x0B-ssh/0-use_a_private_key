@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 #Bash script that uses `ssh` to connect to a server using a new private key
 
-PRIVATE_KEY_FILE=~/.ssh/school
-
-ssh -i "$PRIVATE_KEY_FILE" ubuntu@3.235.30.234
+ssh -i ~/.ssh/school ubuntu@3.235.30.234
