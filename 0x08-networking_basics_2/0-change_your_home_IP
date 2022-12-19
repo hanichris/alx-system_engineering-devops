@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script to configure an Ubuntu server with the following requirements
+# `localhost` resolves to `127.0.0.2`
+# `facebook.com` resolves to `8.8.8.8`
+cp /etc/hosts ~/hosts.new
+sed -i 's/127\.0\.0\.1/127\.0\.0\.2/;$ a8\.8\.8\.8\tfacebook.com' ~/hosts.new
+echo "$(cat ~/hosts.new)" > /etc/hosts
