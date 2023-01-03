@@ -4,6 +4,7 @@
 Make a query to the Reddit API, parse the title of all
 hot articles and print a sorted count of given keywords.
 """
+from collections import Counter
 import requests
 
 
@@ -62,7 +63,6 @@ def count_words(subreddit, word_list):
             result[word] = 1
         elif word in result:
             result[word] += 1
-    from collections import Counter
     count = Counter(word_list)
     for key, value in count.items():
         if value > 1:
