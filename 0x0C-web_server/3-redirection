@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-#Install Nginx web server
-#Nginx should listen on port 80
+#1. Install nginx web server
 
-sudo apt-get update
-sudo apt-get -y install nginx
+sudo apt-get update -y
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me
-https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;' /etc/nginx/sites-
-available/default
-sudo /etc/init.d/nginx restart
+echo "Hello World!" | sudo tee file /var/www/html/index.html
+sudo sed -i '/server_name _;/a rewrite ^/redirect_me/ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
