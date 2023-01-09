@@ -7,9 +7,9 @@ package { 'nginx':
   name   => 'nginx',
 }
 
-file { '/var/www/html/index.html':
+file { '/var/www/html/index.nginx-debian.html':
   content => 'Hello World',
-  path    => '/var/www/html/index.html'
+  path    => '/var/www/html/index.nginx-debian.html'
 }
 
 file_line { 'title':
