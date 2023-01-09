@@ -8,6 +8,7 @@ package { 'nginx':
 }
 
 file { '/var/www/html/index.nginx-debian.html':
+  ensure  => present,
   content => 'Hello World',
   path    => '/var/www/html/index.nginx-debian.html'
 }
