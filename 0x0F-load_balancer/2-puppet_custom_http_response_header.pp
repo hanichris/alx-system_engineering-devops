@@ -1,24 +1,25 @@
-# HTTP header response, name X-Served-By, value of the custom HTTP header must be the hostname of the server Nginx is running on
+# Installs a Nginx server with custome HTTP header
 
-exec { 'update':
+exec {'update':
+  provider => shell,
   command  => 'sudo apt-get -y update',
+  before   => Exec['install Nginx'],
+}
+
+exec {'install Nginx':
   provider => shell,
+  command  => 'sudo apt-get -y install nginx',
+  before   => Exec['add_header'],
 }
 
-package {'nginx':
-  ensure => present,
-  name   => 'nginx',
+exec { 'add_header':
+  provider    => shell,
+  environment => ["HOST=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
+  before      => Exec['restart Nginx'],
 }
 
-file_line { 'header line':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default',
-  line   => "	location / {
-  add_header X-Served-By ${HOSTNAME};",
-  match  => '^\tlocation / {',
-}
-
-exec { 'restart service':
+exec { 'restart Nginx':
+  provider => shell,
   command  => 'sudo service nginx restart',
-  provider => shell,
 }
