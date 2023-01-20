@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Configure an Ubuntu machine with an Nginx web server with the following:
+# 	Listens on port 80
+# 	Custom header with the name `X-Served-By` & value is the hostname
+#
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
+header="\tadd_header X-Served-By $HOSTNAME;"
+sudo sed -i "25 i\ $header" /etc/nginx/sites-enabled/default
+sudo service nginx restart
